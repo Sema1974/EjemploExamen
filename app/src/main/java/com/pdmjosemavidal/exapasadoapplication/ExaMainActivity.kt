@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
@@ -68,6 +69,14 @@ class ExaMainActivity : AppCompatActivity() {
         btnCheck.setOnClickListener{
             setName()
             setHora()
+            comprobarName()
+        }
+    }
+
+    private fun comprobarName(){
+        if(btnName.text.toString().isEmpty()){
+            Toast.makeText(this, "La reserva necesita un nombre", Toast.LENGTH_LONG).show()
+        }else{
             val intentGA = Intent(this, ExaResultActivity::class.java)
             intentGA.putExtra(MESA_KEY, navigate2Result())
             startActivity(intentGA)
